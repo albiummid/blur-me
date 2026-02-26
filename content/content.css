@@ -1,0 +1,61 @@
+.blur-me {
+  position: relative !important;
+  transition: filter 0.3s ease, background 0.3s ease, color 0.3s ease !important;
+}
+
+.blur-me-hover:hover {
+  filter: blur(0) !important;
+  backdrop-filter: none !important;
+  background: inherit !important;
+  color: inherit !important;
+  user-select: inherit !important;
+}
+
+.blur-me-click.blur-me-revealed {
+  filter: blur(0) !important;
+  backdrop-filter: none !important;
+  background: inherit !important;
+  color: inherit !important;
+  user-select: inherit !important;
+}
+
+.blur-me img,
+.blur-me picture,
+.blur-me video,
+.blur-me iframe {
+  transition: filter 0.3s ease;
+}
+
+.blur-me-hover:hover img,
+.blur-me-hover:hover picture,
+.blur-me-hover:hover video,
+.blur-me-hover:hover iframe {
+  filter: none !important;
+}
+
+.blur-me-click.blur-me-revealed img,
+.blur-me-click.blur-me-revealed picture,
+.blur-me-click.blur-me-revealed video,
+.blur-me-click.blur-me-revealed iframe {
+  filter: none !important;
+}
+
+.blur-me img {
+  -webkit-filter: inherit;
+  filter: inherit;
+}
+
+.blur-me-hover:hover img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+.blur-me.picture,
+.blur-me video {
+  display: inline-block;
+}
+
+[data-bg-image].blur-me {
+  background-size: cover !important;
+  background-position: center !important;
+}
