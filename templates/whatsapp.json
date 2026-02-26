@@ -1,0 +1,34 @@
+{
+  "name": "WhatsApp Web",
+  "urlPatterns": [
+    "web.whatsapp.com/*"
+  ],
+  "enabledItems": {
+    "messages": true,
+    "profile": true,
+    "images": false,
+    "videos": false,
+    "text": false,
+    "comments": false,
+    "forms": false,
+    "buttons": false,
+    "custom": false
+  },
+  "customSelectors": {
+    "messages": [
+      "[data-testid='message-container']",
+      "[data-testid='message']",
+      ".message-i1j4k",
+      "[class*='message-']"
+    ],
+    "profile": [
+      "[data-testid='default-avatar']",
+      "[data-testid='author-avatar']",
+      "img[alt*='Profile']"
+    ]
+  },
+  "blurSettings": {
+    "messages": { "level": 5, "type": "gaussian" },
+    "profile": { "level": 5, "type": "gaussian" }
+  }
+}

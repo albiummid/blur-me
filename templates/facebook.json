@@ -1,0 +1,40 @@
+{
+  "name": "Facebook",
+  "urlPatterns": [
+    "facebook.com/*",
+    "fb.com/*"
+  ],
+  "enabledItems": {
+    "profile": true,
+    "comments": true,
+    "images": true,
+    "text": false,
+    "messages": false,
+    "videos": false,
+    "forms": false,
+    "buttons": false,
+    "custom": false
+  },
+  "customSelectors": {
+    "profile": [
+      "[data-pagelet='ProfileAvatar']",
+      "image[xmlns*='facebook']",
+      "[role='img'][aria-label*='profile']",
+      "[class*='profilePic']"
+    ],
+    "comments": [
+      "[data-pagelet*='Comment']",
+      "[aria-label*='Comment']",
+      "[class*='comment']"
+    ],
+    "images": [
+      "[data-pagelet*='Image']",
+      "image[role='img']"
+    ]
+  },
+  "blurSettings": {
+    "profile": { "level": 6, "type": "gaussian" },
+    "comments": { "level": 4, "type": "gaussian" },
+    "images": { "level": 5, "type": "gaussian" }
+  }
+}

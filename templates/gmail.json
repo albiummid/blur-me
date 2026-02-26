@@ -1,0 +1,35 @@
+{
+  "name": "Gmail",
+  "urlPatterns": [
+    "mail.google.com/*",
+    "gmail.com/*"
+  ],
+  "enabledItems": {
+    "text": true,
+    "profile": true,
+    "images": false,
+    "messages": false,
+    "comments": false,
+    "videos": false,
+    "forms": false,
+    "buttons": false,
+    "custom": false
+  },
+  "customSelectors": {
+    "text": [
+      ".h7",
+      ".gs",
+      ".adP",
+      "[data-email-body]"
+    ],
+    "profile": [
+      "img.fo4y5",
+      "[aria-label*='Account']",
+      "[data-initial]"
+    ]
+  },
+  "blurSettings": {
+    "text": { "level": 4, "type": "gaussian" },
+    "profile": { "level": 5, "type": "gaussian" }
+  }
+}

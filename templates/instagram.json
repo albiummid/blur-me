@@ -1,0 +1,33 @@
+{
+  "name": "Instagram",
+  "urlPatterns": [
+    "instagram.com/*"
+  ],
+  "enabledItems": {
+    "profile": true,
+    "images": true,
+    "comments": false,
+    "messages": false,
+    "text": false,
+    "videos": false,
+    "forms": false,
+    "buttons": false,
+    "custom": false
+  },
+  "customSelectors": {
+    "profile": [
+      "img[alt*='profile']",
+      "[class*='Avatar']",
+      "[role='img'][aria-label*='profile']"
+    ],
+    "images": [
+      "article img",
+      "[data-testid='post-image']",
+      "[class*='Image']"
+    ]
+  },
+  "blurSettings": {
+    "profile": { "level": 6, "type": "gaussian" },
+    "images": { "level": 5, "type": "gaussian" }
+  }
+}
