@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blur Me</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>Blur Me</h1>
+      <div class="main-toggle">
+        <label class="toggle-switch">
+          <input type="checkbox" id="globalToggle" checked>
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Enabled</span>
+      </div>
+    </header>
+
+    <div class="current-site" id="currentSite">
+      <span class="site-label">Current Site:</span>
+      <span class="site-name" id="siteName">Loading...</span>
+    </div>
+
+    <section class="quick-settings">
+      <h2>Quick Blur Items</h2>
+      <div class="items-grid" id="itemsGrid">
+        <div class="item-toggle" data-item="images">
+          <span class="item-icon">🖼️</span>
+          <span class="item-name">Images</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="images">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="videos">
+          <span class="item-icon">🎬</span>
+          <span class="item-name">Videos</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="videos">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="profile">
+          <span class="item-icon">👤</span>
+          <span class="item-name">Profile</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="profile">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="text">
+          <span class="item-icon">📝</span>
+          <span class="item-name">Text</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="text">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="comments">
+          <span class="item-icon">💬</span>
+          <span class="item-name">Comments</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="comments">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="messages">
+          <span class="item-icon">✉️</span>
+          <span class="item-name">Messages</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="messages">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="forms">
+          <span class="item-icon">📋</span>
+          <span class="item-name">Forms</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="forms">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="buttons">
+          <span class="item-icon">🔘</span>
+          <span class="item-name">Buttons</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="buttons">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="item-toggle" data-item="custom">
+          <span class="item-icon">⚙️</span>
+          <span class="item-name">Custom</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" data-item="custom">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="blur-level-section">
+      <label for="blurLevel">Blur Level: <span id="blurLevelValue">5</span>px</label>
+      <input type="range" id="blurLevel" min="1" max="20" value="5">
+    </section>
+
+    <footer class="popup-footer">
+      <button id="openSettings" class="btn-secondary">Settings</button>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
