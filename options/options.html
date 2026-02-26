@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blur Me - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <h1>Blur Me Settings</h1>
+      <div class="header-controls">
+        <label class="toggle-switch main-toggle">
+          <input type="checkbox" id="globalEnabled" checked>
+          <span class="slider"></span>
+        </label>
+        <span id="statusText">Extension Enabled</span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+      <button class="tab-btn" data-tab="items">Items</button>
+      <button class="tab-btn" data-tab="templates">Templates</button>
+      <button class="tab-btn" data-tab="settings">Blur Settings</button>
+      <button class="tab-btn" data-tab="importexport">Import/Export</button>
+    </nav>
+
+    <main class="tab-content">
+      <!-- Dashboard Tab -->
+      <section id="dashboard" class="tab-panel active">
+        <h2>Overview</h2>
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <span class="stat-value" id="enabledSitesCount">0</span>
+            <span class="stat-label">Enabled Sites</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="activeItemsCount">0</span>
+            <span class="stat-label">Active Blur Items</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="customTemplatesCount">0</span>
+            <span class="stat-label">Custom Templates</span>
+          </div>
+        </div>
+        
+        <h3>Enabled Items Summary</h3>
+        <div class="summary-grid" id="dashboardSummary">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Items Tab -->
+      <section id="items" class="tab-panel">
+        <h2>Configure Blur Items</h2>
+        <p class="section-desc">Select which element types to blur on websites</p>
+        
+        <div class="items-list" id="itemsList">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Templates Tab -->
+      <section id="templates" class="tab-panel">
+        <h2>Website Templates</h2>
+        <p class="section-desc">Pre-configured settings for popular websites</p>
+        
+        <div class="templates-section">
+          <h3>Built-in Templates</h3>
+          <div class="templates-grid" id="builtinTemplates">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="templates-section">
+          <div class="section-header">
+            <h3>Custom Templates</h3>
+            <button class="btn-primary" id="addTemplateBtn">+ Add Custom</button>
+          </div>
+          <div class="templates-grid" id="customTemplatesList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings Tab -->
+      <section id="settings" class="tab-panel">
+        <h2>Blur Settings</h2>
+        
+        <div class="settings-group">
+          <h3>Global Blur Level</h3>
+          <div class="slider-group">
+            <input type="range" id="globalBlurLevel" min="1" max="20" value="5">
+            <span id="blurLevelDisplay">5px</span>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>Default Blur Type</h3>
+          <select id="globalBlurType">
+            <option value="gaussian">Gaussian Blur</option>
+            <option value="pixelate">Pixelate</option>
+            <option value="frosted">Frosted Glass</option>
+            <option value="blackout">Blackout</option>
+          </select>
+        </div>
+
+        <div class="settings-group">
+          <h3>Behavior Settings</h3>
+          <label class="checkbox-label">
+            <input type="checkbox" id="hoverToReveal" checked>
+            Reveal on hover
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="clickToReveal" checked>
+            Reveal on click (permanent)
+          </label>
+        </div>
+      </section>
+
+      <!-- Import/Export Tab -->
+      <section id="importexport" class="tab-panel">
+        <h2>Import / Export Settings</h2>
+        
+        <div class="import-export-section">
+          <h3>Export Settings</h3>
+          <p>Download your current settings as a JSON file</p>
+          <button class="btn-secondary" id="exportBtn">Export Settings</button>
+        </div>
+
+        <div class="import-export-section">
+          <h3>Import Settings</h3>
+          <p>Load settings from a JSON file</p>
+          <input type="file" id="importFile" accept=".json" class="file-input">
+          <button class="btn-secondary" id="importBtn">Import Settings</button>
+        </div>
+
+        <div class="import-export-section">
+          <h3>Reset</h3>
+          <p>Reset all settings to default values</p>
+          <button class="btn-danger" id="resetBtn">Reset to Defaults</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Custom Template Modal -->
+  <div class="modal" id="templateModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Create Custom Template</h3>
+        <button class="modal-close" id="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Template Name</label>
+          <input type="text" id="templateName" placeholder="My Custom Site">
+        </div>
+        <div class="form-group">
+          <label>URL Pattern (e.g., example.com/*)</label>
+          <input type="text" id="templateUrl" placeholder="example.com/*">
+        </div>
+        <div class="form-group">
+          <label>Items to Blur</label>
+          <div class="checkbox-grid" id="templateItems">
+            <label><input type="checkbox" value="images"> Images</label>
+            <label><input type="checkbox" value="videos"> Videos</label>
+            <label><input type="checkbox" value="text"> Text</label>
+            <label><input type="checkbox" value="profile"> Profile</label>
+            <label><input type="checkbox" value="comments"> Comments</label>
+            <label><input type="checkbox" value="messages"> Messages</label>
+            <label><input type="checkbox" value="forms"> Forms</label>
+            <label><input type="checkbox" value="buttons"> Buttons</label>
+            <label><input type="checkbox" value="custom"> Custom</label>
+          </div>
+        </div>
+        <div class="form-group" id="customSelectorsGroup" style="display:none;">
+          <label>Custom CSS Selectors (comma separated)</label>
+          <textarea id="customSelectors" rows="3" placeholder=".my-class, #my-id, [data-custom]"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="cancelTemplate">Cancel</button>
+        <button class="btn-primary" id="saveTemplate">Save Template</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
