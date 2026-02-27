@@ -19,13 +19,30 @@
       </div>
     </header>
 
-    <div class="current-site" id="currentSite">
-      <span class="site-label">Current Site:</span>
-      <span class="site-name" id="siteName">Loading...</span>
-    </div>
+    <section class="site-selector-section">
+      <div class="site-row">
+        <label class="site-label">Site:</label>
+        <select id="siteSelect" class="site-select">
+          <option value="__current__">Current Site</option>
+        </select>
+        <button id="pickerBtn" class="btn-icon" title="Pick element">🎯</button>
+      </div>
+      <div class="site-row" id="presetRow" style="display: none;">
+        <label class="site-label">Preset:</label>
+        <select id="presetSelect" class="preset-select">
+          <option value="">Custom</option>
+        </select>
+      </div>
+      <div class="site-row">
+        <label class="checkbox-label site-override">
+          <input type="checkbox" id="siteEnabled">
+          Enable custom settings for this site
+        </label>
+      </div>
+    </section>
 
     <section class="quick-settings">
-      <h2>Quick Blur Items</h2>
+      <h2>Blur Items</h2>
       <div class="items-grid" id="itemsGrid">
         <div class="item-toggle" data-item="images">
           <span class="item-icon">🖼️</span>
@@ -99,6 +116,11 @@
             <span class="slider"></span>
           </label>
         </div>
+      </div>
+      
+      <div class="custom-selectors" id="customSelectorsSection" style="display: none;">
+        <label class="selectors-label">Custom Selectors (comma separated):</label>
+        <textarea id="customSelectorsInput" class="selectors-input" placeholder=".my-class, #my-id, [data-custom]"></textarea>
       </div>
     </section>
 

@@ -21,8 +21,8 @@
 
     <nav class="tabs">
       <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
-      <button class="tab-btn" data-tab="items">Items</button>
-      <button class="tab-btn" data-tab="templates">Templates</button>
+      <button class="tab-btn" data-tab="items">Global Items</button>
+      <button class="tab-btn" data-tab="sites">Sites</button>
       <button class="tab-btn" data-tab="settings">Blur Settings</button>
       <button class="tab-btn" data-tab="importexport">Import/Export</button>
     </nav>
@@ -54,32 +54,31 @@
 
       <!-- Items Tab -->
       <section id="items" class="tab-panel">
-        <h2>Configure Blur Items</h2>
-        <p class="section-desc">Select which element types to blur on websites</p>
+        <h2>Global Blur Items</h2>
+        <p class="section-desc">Default settings applied to all websites unless overridden</p>
         
         <div class="items-list" id="itemsList">
           <!-- Populated by JS -->
         </div>
       </section>
 
-      <!-- Templates Tab -->
-      <section id="templates" class="tab-panel">
-        <h2>Website Templates</h2>
-        <p class="section-desc">Pre-configured settings for popular websites</p>
+      <!-- Sites Tab -->
+      <section id="sites" class="tab-panel">
+        <h2>Website-Specific Settings</h2>
+        <p class="section-desc">Configure blur settings for specific websites</p>
         
-        <div class="templates-section">
-          <h3>Built-in Templates</h3>
-          <div class="templates-grid" id="builtinTemplates">
-            <!-- Populated by JS -->
-          </div>
+        <div class="section-header">
+          <h3>Custom Sites</h3>
+          <button class="btn-primary" id="addSiteBtn">+ Add Site</button>
+        </div>
+        <div class="sites-list" id="sitesList">
+          <!-- Populated by JS -->
         </div>
 
         <div class="templates-section">
-          <div class="section-header">
-            <h3>Custom Templates</h3>
-            <button class="btn-primary" id="addTemplateBtn">+ Add Custom</button>
-          </div>
-          <div class="templates-grid" id="customTemplatesList">
+          <h3>Preset Websites</h3>
+          <p class="section-desc">Quick-apply presets for popular websites</p>
+          <div class="templates-grid" id="builtinTemplates">
             <!-- Populated by JS -->
           </div>
         </div>
@@ -146,7 +145,45 @@
     </main>
   </div>
 
-  <!-- Custom Template Modal -->
+  <!-- Site Modal -->
+  <div class="modal" id="siteModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="siteModalTitle">Add Site</h3>
+        <button class="modal-close" id="closeSiteModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Domain (e.g., example.com)</label>
+          <input type="text" id="siteDomain" placeholder="example.com">
+        </div>
+        <div class="form-group">
+          <label>Preset</label>
+          <select id="sitePreset">
+            <option value="">Custom</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="siteEnabledInput" checked>
+            Enable custom settings for this site
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Items to Blur</label>
+          <div class="site-items-list" id="siteItemsList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="cancelSiteModal">Cancel</button>
+        <button class="btn-primary" id="saveSiteBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template Modal -->
   <div class="modal" id="templateModal">
     <div class="modal-content">
       <div class="modal-header">
